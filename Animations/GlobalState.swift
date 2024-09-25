@@ -21,17 +21,61 @@ enum AppNavigation: Identifiable, Equatable {
         lhs.id == rhs.id
     }
     
-    case home(HomeNavigation)
+    case home([HomeNavigation])
     case search
-    case profile
+    case horizontalScroll([HorizontalScrollNavigation])
     case table([TableNavigation])
     
     var id: String {
         switch self {
             case .home: return "home"
             case .search: return "search"
-            case .profile: return "profile"
-            case .table(_): return "table"
+            case .horizontalScroll: return "horizontalScroll"
+            case .table: return "table"
+        }
+    }
+    
+    mutating func pushHomeNavigation(_ newNavigation: HomeNavigation) {
+        switch self {
+        case .home(var stack):
+            stack.append(newNavigation)
+            self = .home(stack)
+        default:
+            break
+        }
+    }
+    
+    mutating func popFromHomeNavigation() {
+        switch self {
+        case .home(var stack):
+            if !stack.isEmpty {
+                stack.removeLast()
+            }
+            self = .home(stack)
+        default:
+            break
+        }
+    }
+    
+    mutating func pushHorizontalScrollerNavigation(_ newNavigation: HorizontalScrollNavigation) {
+        switch self {
+        case .horizontalScroll(var stack):
+            stack.append(newNavigation)
+            self = .horizontalScroll(stack)
+        default:
+            break
+        }
+    }
+    
+    mutating func popFromHorizontalScrollerNavigation() {
+        switch self {
+        case .horizontalScroll(var stack):
+            if !stack.isEmpty {
+                stack.removeLast()
+            }
+            self = .horizontalScroll(stack)
+        default:
+            break
         }
     }
     
@@ -82,11 +126,35 @@ enum TableNavigation: Identifiable, Hashable {
 enum HomeNavigation: Identifiable {
     case main
     case list
+    case detail(String)
     
     var id: String {
         switch self {
             case .main: return "main"
             case .list: return "list"
+            case .detail: return "detail"
+        }
+    }
+}
+
+enum SearchNavigation: Identifiable {
+    case main
+    
+    var id: String {
+        switch self {
+            case .main: return "main"
+        }
+    }
+}
+
+enum HorizontalScrollNavigation: Identifiable {
+    case main
+    case detail(String)
+    
+    var id: String {
+        switch self {
+            case .main: return "main"
+            case .detail: return "detail"
         }
     }
 }

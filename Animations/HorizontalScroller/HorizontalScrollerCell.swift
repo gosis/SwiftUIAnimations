@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct AnimationsViewCell: View {
+struct HorizontalScrollerCell: View {
     let item: String
     let selected: Bool
     var animation: Namespace.ID
     
 
     var body: some View {
+        ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.blue)
-                .frame(width: 150, height: 150)
+                .frame(width: 250, height: 150)
                 .matchedGeometryEffect(id: item, in: animation)
-            /*Text(item)
+            Text(item)
                 .font(.title)
-                .frame(width: 150, height: 100)
-                .background(Color.blue)
+                .matchedGeometryEffect(id: "\(item)-text", in: animation)
                 .foregroundColor(.white)
                 .cornerRadius(10)
-                .matchedGeometryEffect(id: "\(item)-text", in: animation)*/
+        }
     }
 }

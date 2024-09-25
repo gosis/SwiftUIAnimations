@@ -12,16 +12,13 @@ struct ContentView: View {
             VStack {
                 switch globalState.navigation {
                     case .home(let homeNavigation):
-                        switch homeNavigation {
-                        case .main:
-                            MainView(animation: animation)
-                        case .list:
-                            ItemListView(animation: animation)
-                        }
+                        homeNavigationStack(animation: animation,
+                                            homeNavigation: homeNavigation)
                     case .search:
                         LoadingListView()
-                    case .profile:
-                        AnimationsView(animation: animation)
+                    case .horizontalScroll(let horizontalScrollNavigation):
+                        horizontalScrollNavigationStack(animation: animation,
+                                                        horizontalScrollNavigation: horizontalScrollNavigation)
                     case .table(let tableNavigation):
                         tableNavigationStack(animation: animation,
                                             tableNavigation: tableNavigation)
@@ -34,9 +31,49 @@ struct ContentView: View {
         .environmentObject(globalState)
     }
     
+    func homeNavigationStack(animation: Namespace.ID,
+                        homeNavigation: [HomeNavigation]) -> some View {
+        ZStack {
+            ForEach(homeNavigation, id: \.id) { navigation in
+                switch navigation {
+                    case .main:
+                        MainView(animation: animation)
+                        .transition(.noTransition)
+                        .zIndex(1)
+                    case .list:
+                        ItemListView(animation: animation)
+                        .transition(.noTransition)
+                        .zIndex(2)
+                    case .detail(let item):
+                        DetailView(animation: animation, item: item)
+                        .transition(.noTransition)
+                        .zIndex(3)
+                }
+            }
+        }
+    }
+    
+    func horizontalScrollNavigationStack(animation: Namespace.ID, 
+                                         horizontalScrollNavigation: [HorizontalScrollNavigation]) -> some View {
+        ZStack {
+            ForEach(horizontalScrollNavigation, id: \.id) { navigation in
+                switch navigation {
+                    case .main:
+                        HorizontalScrollerView(animation: animation)
+                            .transition(.noTransition)
+                            .zIndex(1)
+                case .detail(let item):
+                    HorizontalScrollerDetailView(animation: animation,
+                                                 item: item)
+                        .transition(.noTransition)
+                        .zIndex(2)
+                }
+            }
+        }
+    }
+    
     func tableNavigationStack(animation: Namespace.ID,
                              tableNavigation: [TableNavigation]) -> some View {
-        
         ZStack {
             ForEach(tableNavigation, id: \.id) { navigation in
                 switch navigation {
@@ -64,5 +101,9 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    @State var globalState = GlobalState(navigation: .home([.main]))
+    @State var animationCoordinator = AnimationCoordinator()
+    return ContentView()
+        .environmentObject(globalState)
+        .environmentObject(animationCoordinator)
 }

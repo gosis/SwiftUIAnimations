@@ -14,6 +14,7 @@
 		5141DB132CA2F53100A22169 /* AnimatedImageListDetailView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB122CA2F53100A22169 /* AnimatedImageListDetailView2.swift */; };
 		5141DB172CA3149800A22169 /* AnimationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB162CA3149800A22169 /* AnimationCoordinator.swift */; };
 		5141DB192CA32F9900A22169 /* AnimatedImageListDetailView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB182CA32F9900A22169 /* AnimatedImageListDetailView3.swift */; };
+		5141DB1B2CA45AD000A22169 /* HorizontalScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB1A2CA45AD000A22169 /* HorizontalScroller.swift */; };
 		51451CB72C80B96A0033DBA4 /* AnimationsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CB62C80B96A0033DBA4 /* AnimationsApp.swift */; };
 		51451CB92C80B96A0033DBA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CB82C80B96A0033DBA4 /* ContentView.swift */; };
 		51451CBB2C80B96B0033DBA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51451CBA2C80B96B0033DBA4 /* Assets.xcassets */; };
@@ -30,9 +31,9 @@
 		51451CE32C8330850033DBA4 /* LoadingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CE22C8330850033DBA4 /* LoadingListView.swift */; };
 		51451CF12C8338530033DBA4 /* LoadingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CF02C8338530033DBA4 /* LoadingListViewModel.swift */; };
 		51451CF32C8340590033DBA4 /* ParalaxCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CF22C8340590033DBA4 /* ParalaxCircleView.swift */; };
-		51451CF62C8768BE0033DBA4 /* AnimationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CF52C8768BE0033DBA4 /* AnimationsView.swift */; };
-		51451CF82C876A900033DBA4 /* AnimationsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CF72C876A900033DBA4 /* AnimationsViewCell.swift */; };
-		51451CFA2C876C310033DBA4 /* AnimationsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CF92C876C310033DBA4 /* AnimationsDetailView.swift */; };
+		51451CF62C8768BE0033DBA4 /* HorizontalScrollerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CF52C8768BE0033DBA4 /* HorizontalScrollerView.swift */; };
+		51451CF82C876A900033DBA4 /* HorizontalScrollerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CF72C876A900033DBA4 /* HorizontalScrollerCell.swift */; };
+		51451CFA2C876C310033DBA4 /* HorizontalScrollerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CF92C876C310033DBA4 /* HorizontalScrollerDetailView.swift */; };
 		51451CFC2C877FFE0033DBA4 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CFB2C877FFE0033DBA4 /* TestView.swift */; };
 		51451CFE2C8788EB0033DBA4 /* TestTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CFD2C8788EB0033DBA4 /* TestTransition.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		5141DB122CA2F53100A22169 /* AnimatedImageListDetailView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageListDetailView2.swift; sourceTree = "<group>"; };
 		5141DB162CA3149800A22169 /* AnimationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCoordinator.swift; sourceTree = "<group>"; };
 		5141DB182CA32F9900A22169 /* AnimatedImageListDetailView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageListDetailView3.swift; sourceTree = "<group>"; };
+		5141DB1A2CA45AD000A22169 /* HorizontalScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScroller.swift; sourceTree = "<group>"; };
 		51451CB32C80B96A0033DBA4 /* Animations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51451CB62C80B96A0033DBA4 /* AnimationsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsApp.swift; sourceTree = "<group>"; };
 		51451CB82C80B96A0033DBA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,9 +65,9 @@
 		51451CE22C8330850033DBA4 /* LoadingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingListView.swift; sourceTree = "<group>"; };
 		51451CF02C8338530033DBA4 /* LoadingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingListViewModel.swift; sourceTree = "<group>"; };
 		51451CF22C8340590033DBA4 /* ParalaxCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParalaxCircleView.swift; sourceTree = "<group>"; };
-		51451CF52C8768BE0033DBA4 /* AnimationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsView.swift; sourceTree = "<group>"; };
-		51451CF72C876A900033DBA4 /* AnimationsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsViewCell.swift; sourceTree = "<group>"; };
-		51451CF92C876C310033DBA4 /* AnimationsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsDetailView.swift; sourceTree = "<group>"; };
+		51451CF52C8768BE0033DBA4 /* HorizontalScrollerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollerView.swift; sourceTree = "<group>"; };
+		51451CF72C876A900033DBA4 /* HorizontalScrollerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollerCell.swift; sourceTree = "<group>"; };
+		51451CF92C876C310033DBA4 /* HorizontalScrollerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollerDetailView.swift; sourceTree = "<group>"; };
 		51451CFB2C877FFE0033DBA4 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		51451CFD2C8788EB0033DBA4 /* TestTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,10 +98,19 @@
 		5141DB112CA2B8A800A22169 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				51451CD22C81C08C0033DBA4 /* ItemListView.swift */,
 				51451CCF2C81BF1E0033DBA4 /* MainView.swift */,
+				51451CD22C81C08C0033DBA4 /* ItemListView.swift */,
+				51451CD62C81C1C00033DBA4 /* ItemListCell.swift */,
+				51451CD82C81C30B0033DBA4 /* DetailView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		5141DB212CA4720800A22169 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		51451CAA2C80B96A0033DBA4 = {
@@ -127,14 +138,13 @@
 				5141DB162CA3149800A22169 /* AnimationCoordinator.swift */,
 				51451CFB2C877FFE0033DBA4 /* TestView.swift */,
 				51451CFD2C8788EB0033DBA4 /* TestTransition.swift */,
+				5141DB212CA4720800A22169 /* Navigation */,
 				5141DB112CA2B8A800A22169 /* Home */,
 				5141DB082CA1BCB800A22169 /* AnimatedImageListView */,
 				51451CE42C8330E30033DBA4 /* LoadingListView */,
-				51451CF42C8768A70033DBA4 /* Animations */,
-				51451CE02C81FE7D0033DBA4 /* DetailViewScroller.swift */,
+				51451CF42C8768A70033DBA4 /* HorizontalScroller */,
 				51451CDC2C81F7D90033DBA4 /* CustomNavigationBar.swift */,
-				51451CD82C81C30B0033DBA4 /* DetailView.swift */,
-				51451CD62C81C1C00033DBA4 /* ItemListCell.swift */,
+				51451CE02C81FE7D0033DBA4 /* DetailViewScroller.swift */,
 				51451CDE2C81FAEC0033DBA4 /* CustomTabbarView.swift */,
 				51451CD12C81BFC30033DBA4 /* Utilities */,
 				51451CBA2C80B96B0033DBA4 /* Assets.xcassets */,
@@ -171,14 +181,15 @@
 			path = LoadingListView;
 			sourceTree = "<group>";
 		};
-		51451CF42C8768A70033DBA4 /* Animations */ = {
+		51451CF42C8768A70033DBA4 /* HorizontalScroller */ = {
 			isa = PBXGroup;
 			children = (
-				51451CF52C8768BE0033DBA4 /* AnimationsView.swift */,
-				51451CF92C876C310033DBA4 /* AnimationsDetailView.swift */,
-				51451CF72C876A900033DBA4 /* AnimationsViewCell.swift */,
+				51451CF52C8768BE0033DBA4 /* HorizontalScrollerView.swift */,
+				51451CF92C876C310033DBA4 /* HorizontalScrollerDetailView.swift */,
+				5141DB1A2CA45AD000A22169 /* HorizontalScroller.swift */,
+				51451CF72C876A900033DBA4 /* HorizontalScrollerCell.swift */,
 			);
-			path = Animations;
+			path = HorizontalScroller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +272,7 @@
 				5141DB102CA2A5EA00A22169 /* GlobalState.swift in Sources */,
 				51451CB92C80B96A0033DBA4 /* ContentView.swift in Sources */,
 				51451CDD2C81F7D90033DBA4 /* CustomNavigationBar.swift in Sources */,
-				51451CF82C876A900033DBA4 /* AnimationsViewCell.swift in Sources */,
+				51451CF82C876A900033DBA4 /* HorizontalScrollerCell.swift in Sources */,
 				51451CD52C81C1180033DBA4 /* ParalaxHeader.swift in Sources */,
 				51451CD02C81BF1E0033DBA4 /* MainView.swift in Sources */,
 				51451CE12C81FE7D0033DBA4 /* DetailViewScroller.swift in Sources */,
@@ -270,11 +281,12 @@
 				5141DB192CA32F9900A22169 /* AnimatedImageListDetailView3.swift in Sources */,
 				51451CDF2C81FAEC0033DBA4 /* CustomTabbarView.swift in Sources */,
 				51451CB72C80B96A0033DBA4 /* AnimationsApp.swift in Sources */,
-				51451CF62C8768BE0033DBA4 /* AnimationsView.swift in Sources */,
+				51451CF62C8768BE0033DBA4 /* HorizontalScrollerView.swift in Sources */,
 				5141DB132CA2F53100A22169 /* AnimatedImageListDetailView2.swift in Sources */,
 				51451CFC2C877FFE0033DBA4 /* TestView.swift in Sources */,
+				5141DB1B2CA45AD000A22169 /* HorizontalScroller.swift in Sources */,
 				51451CD72C81C1C00033DBA4 /* ItemListCell.swift in Sources */,
-				51451CFA2C876C310033DBA4 /* AnimationsDetailView.swift in Sources */,
+				51451CFA2C876C310033DBA4 /* HorizontalScrollerDetailView.swift in Sources */,
 				51451CFE2C8788EB0033DBA4 /* TestTransition.swift in Sources */,
 				51451CF12C8338530033DBA4 /* LoadingListViewModel.swift in Sources */,
 			);

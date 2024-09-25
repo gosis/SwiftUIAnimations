@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct AnimationsApp: App {
     var body: some Scene {
-        @State var globalState = GlobalState(navigation: .home(.main))
+        @State var globalState = GlobalState(navigation: .home([.main]))
         @State var animationCoordinator = AnimationCoordinator()
         
         WindowGroup {

@@ -9,11 +9,14 @@ import SwiftUI
 
 struct ItemListView: View {
     @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     var animation: Namespace.ID
     @State private var showList = false
-    
-    @State private var selectedItem: String?
+        
+    let previousSourceKey = String(describing: MainView.self)
+    let sourceKey = String(describing: ItemListView.self)
+    let nextSourceKey = String(describing: DetailView.self)
     
     @State var items = [
         "Test15",
@@ -47,7 +50,8 @@ struct ItemListView: View {
                             .padding()
                             .onTapGesture {
                                 withAnimation(.easeOut(duration: AppConstants.logoAnimationDuration)) {
-                                    globalState.navigation = .home(.main)
+                                    animationCoordinator.removeState(sourceKey: previousSourceKey)
+                                    globalState.navigation.popFromHomeNavigation()
                                 }
                             }
                     }
@@ -55,6 +59,8 @@ struct ItemListView: View {
                     .zIndex(0)
                     
                     if showList {
+                        let stateHashable = animationCoordinator.getState(sourceKey: nextSourceKey)
+                        let selectedItem = stateHashable as? String
                         ForEach(0..<items.count, id: \.self) { index in
                             let item = items[index]
                             
@@ -64,7 +70,8 @@ struct ItemListView: View {
                                              animation: animation)
                                 .onTapGesture {
                                     withAnimation(.easeInOut(duration: AppConstants.selectionAnimationDuration)) {
-                                        selectedItem = item
+                                        animationCoordinator.addState(item: item, sourceKey: nextSourceKey)
+                                        globalState.navigation.pushHomeNavigation(.detail(item))
                                     }
                                 }
                                 .frame(height: 60)
@@ -83,17 +90,6 @@ struct ItemListView: View {
                 withAnimation(.easeIn) {
                     showList = true
                 }
-            }
-            // Detail View as a fullscreen overlay
-            if let selected = selectedItem {
-                DetailView(animation: animation,
-                           item: selected, onDismiss: {
-                    withAnimation(.easeInOut(duration: AppConstants.selectionAnimationDuration)) {
-                        selectedItem = nil
-                    }
-                })
-                .zIndex(1)
-                .transition(.asymmetric(insertion: .identity, removal: .opacity))
             }
         }
     }

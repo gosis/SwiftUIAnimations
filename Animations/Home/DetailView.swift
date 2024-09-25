@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct DetailView: View {
+    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var animationCoordinator: AnimationCoordinator
+    
     var animation: Namespace.ID
     @State var item: String
-    var onDismiss: () -> Void
     
     @State private var showItems = false
+    
+    let sourceKey = String(describing: DetailView.self)
 
     var body: some View {
         ZStack {
@@ -26,7 +30,13 @@ struct DetailView: View {
         
                 VStack {
                     if showItems {
-                        CustomNavigationBar(title: "Detail View", onDismiss: onDismiss)
+                        CustomNavigationBar(title: "Detail View") {
+                            withAnimation(.linear(duration: AppConstants.selectionAnimationDuration)) {
+                                animationCoordinator.removeState(sourceKey: sourceKey)
+                                showItems = false
+                                globalState.navigation.popFromHomeNavigation()
+                            }
+                        }
                     }
                     Text(item)
                         .font(.largeTitle)
@@ -52,7 +62,5 @@ struct DetailView: View {
 #Preview {
     @Namespace var animation
     return DetailView(animation: animation, 
-                      item: "test") {
-        
-    }
+                      item: "test")
 }

@@ -13,9 +13,9 @@ struct CustomTabBarView: View {
 
     // TabItems to iterate over
     let tabItems: [TabItem] = [
-        TabItem(icon: "house.fill", title: "Home", destination: .home(.main)),
-        TabItem(icon: "magnifyingglass", title: "Search", destination: .search),
-        TabItem(icon: "person.fill", title: "Profile", destination: .profile),
+        TabItem(icon: "house.fill", title: "Logo", destination: .home([.main])),
+        TabItem(icon: "magnifyingglass", title: "Paralax", destination: .search),
+        TabItem(icon: "person.fill", title: "HorizontalScroll", destination: .horizontalScroll([.main])),
         TabItem(icon: "list.dash", title: "Table", destination: .table([.animatedImageListView]))
     ]
     

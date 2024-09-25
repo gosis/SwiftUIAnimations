@@ -10,21 +10,27 @@ import SwiftUI
 struct MainView: View {
     var animation: Namespace.ID
     @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var animationCoordinator: AnimationCoordinator
+    
+    let sourceKey = String(describing: MainView.self)
 
     var body: some View {
         VStack {
             Spacer()
-            Image("logo")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .matchedGeometryEffect(id: "image", in: animation)
-                .frame(maxWidth: 100, maxHeight: 100)
-                .padding()
-                .onTapGesture {
-                    withAnimation(.easeOut(duration: AppConstants.logoAnimationDuration)) {
-                        globalState.navigation = .home(.list)
+            if !animationCoordinator.isActive(sourceKey: sourceKey) {
+                Image("logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .matchedGeometryEffect(id: "image", in: animation)
+                    .frame(maxWidth: 100, maxHeight: 100)
+                    .padding()
+                    .onTapGesture {
+                        withAnimation(.easeOut(duration: AppConstants.logoAnimationDuration)) {
+                            globalState.navigation.pushHomeNavigation(.list)
+                            animationCoordinator.addState(item: "logo", sourceKey: sourceKey)
+                        }
                     }
-                }
+            }
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)

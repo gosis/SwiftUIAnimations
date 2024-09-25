@@ -16,12 +16,12 @@ extension AnyTransition {
     }
     
     static var navigationTransition: AnyTransition {
-            AnyTransition.move(edge: .trailing)
-                .combined(with: AnyTransition.modifier(
-                    active: ScaleAndBackgroundModifier(scale: 1.2, opacity: 0.0),
-                    identity: ScaleAndBackgroundModifier(scale: 1.0, opacity: 1.0)
-                ))
-        }
+        AnyTransition.move(edge: .trailing)
+            .combined(with: AnyTransition.modifier(
+                active: ScaleAndBackgroundModifier(scale: 1.2, opacity: 0.0),
+                identity: ScaleAndBackgroundModifier(scale: 1.0, opacity: 1.0)
+            ))
+    }
 }
 
 struct ScaleAndBackgroundModifier: ViewModifier {
