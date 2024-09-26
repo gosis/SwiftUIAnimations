@@ -9,17 +9,18 @@ import SwiftUI
 
 struct AnimatedImageListDetailView3: View {
     var animation: Namespace.ID
-    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     var item: String
     var body: some View {
         ZStack {
             Color.blue
+                .edgesIgnoringSafeArea(.bottom)
             VStack {
                 CustomNavigationBar(title: "Final detail view", onDismiss: {
                     withAnimation(.spring(duration: AppConstants.navigationAnimationDuration)) {
-                        globalState.navigation.popFromTableNavigation()
+                        router.pop(TableNavigation.self)
                     }
                    })
                 Spacer()

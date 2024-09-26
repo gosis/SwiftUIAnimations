@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemListView: View {
-    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     var animation: Namespace.ID
@@ -51,14 +51,14 @@ struct ItemListView: View {
                             .onTapGesture {
                                 withAnimation(.easeOut(duration: AppConstants.logoAnimationDuration)) {
                                     animationCoordinator.removeState(sourceKey: previousSourceKey)
-                                    globalState.navigation.popFromHomeNavigation()
+                                    router.pop(HomeNavigation.self)
                                 }
                             }
                     }
                     .frame(height: 230)
                     .zIndex(0)
                     
-                    if showList {
+                    if showList && animationCoordinator.isActive(sourceKey: previousSourceKey) {
                         let stateHashable = animationCoordinator.getState(sourceKey: nextSourceKey)
                         let selectedItem = stateHashable as? String
                         ForEach(0..<items.count, id: \.self) { index in
@@ -71,7 +71,7 @@ struct ItemListView: View {
                                 .onTapGesture {
                                     withAnimation(.easeInOut(duration: AppConstants.selectionAnimationDuration)) {
                                         animationCoordinator.addState(item: item, sourceKey: nextSourceKey)
-                                        globalState.navigation.pushHomeNavigation(.detail(item))
+                                        router.push(HomeNavigation.detail(item))
                                     }
                                 }
                                 .frame(height: 60)

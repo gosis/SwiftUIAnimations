@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     var animation: Namespace.ID
-    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     let sourceKey = String(describing: MainView.self)
@@ -26,7 +26,7 @@ struct MainView: View {
                     .padding()
                     .onTapGesture {
                         withAnimation(.easeOut(duration: AppConstants.logoAnimationDuration)) {
-                            globalState.navigation.pushHomeNavigation(.list)
+                            router.push(HomeNavigation.list)
                             animationCoordinator.addState(item: "logo", sourceKey: sourceKey)
                         }
                     }

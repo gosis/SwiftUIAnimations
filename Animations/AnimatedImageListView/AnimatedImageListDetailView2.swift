@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AnimatedImageListDetailView2: View {
     var animation: Namespace.ID
-    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     var item: String
@@ -21,11 +21,11 @@ struct AnimatedImageListDetailView2: View {
                     withAnimation(.linear(duration: AppConstants.animatedImageListAnimDuration)) {
                         let sourceKey = String(describing: AnimatedImageListDetailView2.self)
                         animationCoordinator.removeState(sourceKey: sourceKey)
-                        globalState.navigation.popFromTableNavigation()
+                        router.pop(TableNavigation.self)
                     }
                    }, onNext: {
                        withAnimation(.spring(duration: AppConstants.navigationAnimationDuration)) {
-                           globalState.navigation.pushTableNavigation(.animatedImageListDetailView3(item))
+                           router.push(TableNavigation.animatedImageListDetailView3(item))
                        }
                    })
                 HStack {

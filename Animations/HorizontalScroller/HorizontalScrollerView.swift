@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct HorizontalScrollerView: View {
-    
-    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     var animation: Namespace.ID
@@ -22,22 +21,21 @@ struct HorizontalScrollerView: View {
         ZStack {
             VStack {
                 scrollerTitle("First scroller title")
-                HorizontalScroller(animation: animation, items: Array(1...10).map { "Item \($0)" })
+                HorizontalScroller(animation: animation, items: Array(1...10).map { "Item \($0)" }, showItems: showItems)
                 Spacer()
                     .frame(height: 20)
                 scrollerTitle("First scroller title")
-                HorizontalScroller(animation: animation, items: Array(11...20).map { "Item \($0)" })
+                HorizontalScroller(animation: animation, items: Array(11...20).map { "Item \($0)" }, showItems: showItems)
                 Spacer()
                     .frame(height: 20)
                 scrollerTitle("First scroller title")
-                HorizontalScroller(animation: animation, items: Array(21...30).map { "Item \($0)" })
+                HorizontalScroller(animation: animation, items: Array(21...30).map { "Item \($0)" }, showItems: showItems)
                 Spacer()
-            }
-            .onAppear {
-                showItems = true
             }
         }
-        .background(Color.black)
+        .onChange(of: router.selectedTab) { newTab in
+            showItems = newTab == .secondTab
+        }
         Spacer()
     }
     
@@ -52,10 +50,10 @@ struct HorizontalScrollerView: View {
 
 #Preview {
     @Namespace var animation
-    @State var globalState = GlobalState(navigation: .home([.main]))
+    @State var router = Router()
     @State var animationCoordinator = AnimationCoordinator()
     
     return HorizontalScrollerView(animation: animation)
-        .environmentObject(globalState)
+        .environmentObject(router)
         .environmentObject(animationCoordinator)
 }

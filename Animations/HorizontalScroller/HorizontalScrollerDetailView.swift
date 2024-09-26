@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HorizontalScrollerDetailView: View {
-    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     var animation: Namespace.ID
@@ -28,7 +28,7 @@ struct HorizontalScrollerDetailView: View {
                             dismissing = true
                             withAnimation {
                                 animationCoordinator.removeState(sourceKey: sourceKey)
-                                globalState.navigation.popFromHorizontalScrollerNavigation()
+                                router.pop(HorizontalScrollNavigation.self)
                             }
                         }
                     }
@@ -43,9 +43,9 @@ struct HorizontalScrollerDetailView: View {
                         .foregroundColor(.white)
                         .matchedGeometryEffect(id: "\(item)-text", in: animation)
                 }
-                Spacer()
             }
         }
+        .edgesIgnoringSafeArea(.bottom)
         .onAppear {
             dismissing = false
             DispatchQueue.main.asyncAfter(deadline: .now() + AppConstants.horizontalAnimation) {

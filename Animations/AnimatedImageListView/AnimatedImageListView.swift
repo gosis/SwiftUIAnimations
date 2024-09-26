@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AnimatedImageListView: View {
     var animation: Namespace.ID
-    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     let items = Array(1...10).map { "Item \($0)" }
@@ -23,8 +23,9 @@ struct AnimatedImageListView: View {
                                     let navigation = TableNavigation.animatedImageListItemView(item)
                                     let sourceKey = String(describing: AnimatedImageListView.self)
                                     
-                                    animationCoordinator.addState(item: item, sourceKey: sourceKey)
-                                    globalState.navigation.pushTableNavigation(navigation)
+                                    animationCoordinator.addState(item: item, 
+                                                                  sourceKey: sourceKey)
+                                    router.push(navigation)
                                 }
                             }
                     }

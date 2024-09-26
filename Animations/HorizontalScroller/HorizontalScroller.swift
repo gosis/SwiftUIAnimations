@@ -9,13 +9,13 @@ import SwiftUI
 
 struct HorizontalScroller: View {
     
-    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     var animation: Namespace.ID
     
-    @State private var showItems = false
     let items:[String]
+    let showItems: Bool
     let sourceKey = String(describing: HorizontalScrollerView.self)
     
     var body: some View {
@@ -34,9 +34,12 @@ struct HorizontalScroller: View {
                         HorizontalScrollerCell(item: item,
                                                selected: isSelected,
                                                animation: animation)
-                        .scaleEffect(showItems ? 1 : 0.3)
-                        .animation(.spring().delay(Double(index) * 0.1), value: showItems)
+                        .scaleEffect(showItems ? 1 : 0.95)
+                        .animation(.spring(), value: showItems)
                         .offset(x: {
+                            if (!showItems) {
+                                return Bool.random() ? 5 : -5
+                            }
                             if let selectedItem = selectedItem, !isSelected {
                                 // If selectedItem is not nil and this item is not selected, apply offset logic
                                 if let selectedIndex = items.firstIndex(of: selectedItem) {
@@ -49,7 +52,7 @@ struct HorizontalScroller: View {
                         .onTapGesture {
                             withAnimation(.easeOut(duration: AppConstants.horizontalAnimation)) {
                                 animationCoordinator.addState(item: item, sourceKey: sourceKey)
-                                globalState.navigation.pushHorizontalScrollerNavigation(.detail(item))
+                                router.push(HorizontalScrollNavigation.detail(item))
                             }
                         }
                     }
@@ -58,21 +61,18 @@ struct HorizontalScroller: View {
             }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
         }
-        .onAppear {
-            showItems = true
-        }
     }
 }
 
 #Preview {
     @Namespace var animation
-    
-    @State var globalState = GlobalState(navigation: .home([.main]))
+    @State var router = Router()
     @State var animationCoordinator = AnimationCoordinator()
     
     let items = Array(1...10).map { "Item \($0)" }
     return HorizontalScroller(animation: animation,
-                              items: items)
-        .environmentObject(globalState)
+                              items: items,
+                              showItems: true)
+        .environmentObject(router)
         .environmentObject(animationCoordinator)
 }

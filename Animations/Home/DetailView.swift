@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     var animation: Namespace.ID
@@ -34,7 +34,7 @@ struct DetailView: View {
                             withAnimation(.linear(duration: AppConstants.selectionAnimationDuration)) {
                                 animationCoordinator.removeState(sourceKey: sourceKey)
                                 showItems = false
-                                globalState.navigation.popFromHomeNavigation()
+                                router.pop(HomeNavigation.self)
                             }
                         }
                     }
@@ -43,7 +43,7 @@ struct DetailView: View {
                         .foregroundColor(.white)
                         .matchedGeometryEffect(id: "\(item)-text", in: animation)
                     Spacer()
-                    if (showItems) {
+                    if (showItems && animationCoordinator.isActive(sourceKey: sourceKey)) {
                         DetailViewScroller()
                     }
                 }

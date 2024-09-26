@@ -10,13 +10,13 @@ import SwiftUI
 @main
 struct AnimationsApp: App {
     var body: some Scene {
-        @State var globalState = GlobalState(navigation: .home([.main]))
+        @State var router = Router()
         @State var animationCoordinator = AnimationCoordinator()
         
         WindowGroup {
-            ContentView()
-                .environmentObject(globalState)
+            TabbarContainer()
                 .environmentObject(animationCoordinator)
+                .environmentObject(router)
         }
     }
 }
