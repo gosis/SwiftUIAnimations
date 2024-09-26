@@ -19,6 +19,8 @@
 		5141DB2E2CA55C4100A22169 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB2D2CA55C4100A22169 /* ContainerView.swift */; };
 		5141DB302CA55DDC00A22169 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB2F2CA55DDC00A22169 /* Router.swift */; };
 		5141DB322CA564B000A22169 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB312CA564B000A22169 /* Extensions.swift */; };
+		5141DB342CA5B2EB00A22169 /* LoadingListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB332CA5B2EB00A22169 /* LoadingListDetailView.swift */; };
+		5141DB362CA5D01000A22169 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB352CA5D01000A22169 /* ViewModifiers.swift */; };
 		51451CB72C80B96A0033DBA4 /* AnimationsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CB62C80B96A0033DBA4 /* AnimationsApp.swift */; };
 		51451CBB2C80B96B0033DBA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51451CBA2C80B96B0033DBA4 /* Assets.xcassets */; };
 		51451CBF2C80B96B0033DBA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51451CBE2C80B96B0033DBA4 /* Preview Assets.xcassets */; };
@@ -53,6 +55,8 @@
 		5141DB2D2CA55C4100A22169 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		5141DB2F2CA55DDC00A22169 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5141DB312CA564B000A22169 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5141DB332CA5B2EB00A22169 /* LoadingListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingListDetailView.swift; sourceTree = "<group>"; };
+		5141DB352CA5D01000A22169 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		51451CB32C80B96A0033DBA4 /* Animations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51451CB62C80B96A0033DBA4 /* AnimationsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsApp.swift; sourceTree = "<group>"; };
 		51451CBA2C80B96B0033DBA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				5141DB162CA3149800A22169 /* AnimationCoordinator.swift */,
 				51451CFD2C8788EB0033DBA4 /* TestTransition.swift */,
 				5141DB312CA564B000A22169 /* Extensions.swift */,
+				5141DB352CA5D01000A22169 /* ViewModifiers.swift */,
 				5141DB262CA5596200A22169 /* Container */,
 				5141DB112CA2B8A800A22169 /* Home */,
 				5141DB082CA1BCB800A22169 /* AnimatedImageListView */,
@@ -181,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				51451CE22C8330850033DBA4 /* LoadingListView.swift */,
+				5141DB332CA5B2EB00A22169 /* LoadingListDetailView.swift */,
 				51451CF02C8338530033DBA4 /* LoadingListViewModel.swift */,
 				51451CF22C8340590033DBA4 /* ParalaxCircleView.swift */,
 			);
@@ -280,10 +286,12 @@
 				51451CDD2C81F7D90033DBA4 /* CustomNavigationBar.swift in Sources */,
 				51451CF82C876A900033DBA4 /* HorizontalScrollerCell.swift in Sources */,
 				51451CD52C81C1180033DBA4 /* ParalaxHeader.swift in Sources */,
+				5141DB342CA5B2EB00A22169 /* LoadingListDetailView.swift in Sources */,
 				51451CD02C81BF1E0033DBA4 /* MainView.swift in Sources */,
 				51451CE12C81FE7D0033DBA4 /* DetailViewScroller.swift in Sources */,
 				5141DB2A2CA55A9600A22169 /* Navigable.swift in Sources */,
 				51451CE32C8330850033DBA4 /* LoadingListView.swift in Sources */,
+				5141DB362CA5D01000A22169 /* ViewModifiers.swift in Sources */,
 				5141DB0A2CA1BCDD00A22169 /* AnimatedImageListCell.swift in Sources */,
 				5141DB192CA32F9900A22169 /* AnimatedImageListDetailView3.swift in Sources */,
 				51451CB72C80B96A0033DBA4 /* AnimationsApp.swift in Sources */,
@@ -440,6 +448,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -478,6 +487,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";

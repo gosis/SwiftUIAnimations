@@ -43,6 +43,7 @@ struct CustomNavigationBar: View {
                 .frame(height: 44)
             }
         }
+        .zIndex(1000)
         .frame(height: 44)
     }
 }

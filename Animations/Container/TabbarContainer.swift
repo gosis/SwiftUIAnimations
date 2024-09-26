@@ -4,6 +4,7 @@ struct TabbarContainer: View {
     @EnvironmentObject var router: Router
     
     @Namespace private var animation
+    
 
     var body: some View {
         let needstohideTabBar = router.needsToHideTabbar()
@@ -53,6 +54,7 @@ struct TabbarContainer: View {
                              icon: "person.fill")
             }
             .padding()
+            .padding(.bottom, UIApplication.shared.safeAreaInsets.bottom > 0 ? 0 : 30)
             .background(.white)
             .offset(y: needstohideTabBar ? 100 : 0)
         }
@@ -133,7 +135,14 @@ struct TabbarContainer: View {
             ForEach(loadingListNavigation, id: \.id) { navigation in
                 switch navigation {
                     case .main:
-                        LoadingListView()
+                        LoadingListView(animation: animation)
+                            .transition(.noTransition)
+                            .zIndex(1)
+                    case .detail(let item):
+                        LoadingListDetailView(animation: animation, 
+                                              item: item)
+                            .transition(.noTransition)
+                            .zIndex(2)
                 }
             }
         }

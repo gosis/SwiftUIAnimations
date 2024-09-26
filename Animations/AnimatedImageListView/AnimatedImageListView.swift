@@ -7,6 +7,7 @@ struct AnimatedImageListView: View {
     
     let items = Array(1...10).map { "Item \($0)" }
     @State private var selectedItem: String?
+    @State private var showItems = false
     
     let string = String(describing: AnimatedImageListView.self)
 
@@ -18,20 +19,24 @@ struct AnimatedImageListView: View {
                         AnimatedImageListCell(item: item,
                                               animation: animation)
                         .transition(.noTransition)
-                            .onTapGesture {
-                                withAnimation(.easeOut(duration: AppConstants.animatedImageListAnimDuration)) {
-                                    let navigation = TableNavigation.animatedImageListItemView(item)
-                                    let sourceKey = String(describing: AnimatedImageListView.self)
-                                    
-                                    animationCoordinator.addState(item: item, 
-                                                                  sourceKey: sourceKey)
-                                    router.push(navigation)
-                                }
+                        .scaleAppearanceEffect(showItems: showItems)
+                        .onTapGesture {
+                            withAnimation(.easeOut(duration: AppConstants.animatedImageListAnimDuration)) {
+                                let navigation = TableNavigation.animatedImageListItemView(item)
+                                let sourceKey = String(describing: AnimatedImageListView.self)
+                                
+                                animationCoordinator.addState(item: item,
+                                                              sourceKey: sourceKey)
+                                router.push(navigation)
                             }
+                        }
                     }
                 }
                 .padding()
             }
+        }
+        .onChange(of: router.selectedTab) { newTab in
+            showItems = newTab == .thirdTab
         }
     }
 }

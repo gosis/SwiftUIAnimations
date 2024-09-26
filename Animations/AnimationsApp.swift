@@ -15,6 +15,7 @@ struct AnimationsApp: App {
         
         WindowGroup {
             TabbarContainer()
+                .preferredColorScheme(.light)
                 .environmentObject(animationCoordinator)
                 .environmentObject(router)
         }

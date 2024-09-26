@@ -16,4 +16,22 @@ extension View {
             self
         }
     }
+    
+    func offsetAppearanceEffect(showItems: Bool) -> some View {
+        self.modifier(OffsetEffectModifier(showItems: showItems))
+    }
+    
+    func scaleAppearanceEffect(showItems: Bool) -> some View {
+        self.modifier(ScaleEffectModifier(showItems: showItems))
+    }
+}
+
+extension UIApplication {
+    var safeAreaInsets: UIEdgeInsets {
+        guard let windowScene = connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else {
+            return .zero
+        }
+        return window.safeAreaInsets
+    }
 }

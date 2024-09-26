@@ -97,16 +97,19 @@ enum HorizontalScrollNavigation: Navigable {
 
 enum LoadingListNavigation: Navigable {
     case main
+    case detail(Int)
     
     var associatedValue: Int {
         switch self {
             case .main: return 10
+            case .detail: return 11
         }
     }
     
     var id: String {
         switch self {
             case .main: return "main"
+            case .detail: return "detail"
         }
     }
 }

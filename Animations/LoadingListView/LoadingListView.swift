@@ -1,26 +1,15 @@
 import SwiftUI
 
-struct CustomCell: View {
-    var item: Int
-    
-    var body: some View {
-        HStack {
-            Text("Item \(item)")
-                .font(.headline)
-                .padding()
-            Spacer()
-            Image(systemName: "star")
-                .foregroundColor(.yellow)
-                .padding()
-        }
-        .background(Color.gray.opacity(0.1))
-        .cornerRadius(10)
-        .padding(.horizontal)
-    }
-}
-
 struct LoadingListView: View {
+    var animation: Namespace.ID
+    @EnvironmentObject var router: Router
+    @EnvironmentObject var animationCoordinator: AnimationCoordinator
+    
     @StateObject private var viewModel = LoadingListViewModel()
+    @State private var selectedItem: Int?
+    @State private var showItems = false
+    
+    let sourceKey = String(describing: LoadingListView.self)
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -39,12 +28,38 @@ struct LoadingListView: View {
             .frame(height: 200)
             LazyVStack {
                 ForEach(viewModel.items, id: \.self) { item in
-                    itemView(for: item)
+                    let isSelected = selectedItem == item
+                    
+                    if let stateHashable = animationCoordinator.getState(sourceKey: sourceKey),
+                        let editingItem = stateHashable as? Int, 
+                        editingItem == item {
+                        Spacer()
+                            .frame(height: UIScreen.main.bounds.height)
+                    } else {
+                        itemView(for: item,
+                                 isSelected: isSelected,
+                                 showItems: showItems,
+                                 onEditTap: {
+                            withAnimation(.easeOut(duration: AppConstants.loadingListAnimation)) {
+                                animationCoordinator.addState(item: item, sourceKey: sourceKey)
+                                router.push(LoadingListNavigation.detail(item))
+                            }
+                        })
+                        .onTapGesture {
+                            withAnimation(.easeOut(duration: AppConstants.loadingListAnimation)) {
+                                if isSelected {
+                                    selectedItem = nil
+                                } else {
+                                    selectedItem = item
+                                }
+                            }
+                        }
                         .onAppear {
                             if item == viewModel.items.last {
                                 viewModel.loadNextItems()
                             }
                         }
+                    }
                 }
                 
                 if viewModel.isLoading {
@@ -54,19 +69,70 @@ struct LoadingListView: View {
             }
             .padding(.vertical)
         }
+        .onChange(of: router.selectedTab) { newTab in
+            showItems = newTab == .fourthTab
+        }
     }
     
     @ViewBuilder
-    private func itemView(for item: Int) -> some View {
-        Text("Item \(item)")
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color.blue)
-            .cornerRadius(10)
-            .padding(.horizontal)
+    private func itemView(for item: Int, 
+                          isSelected: Bool,
+                          showItems: Bool,
+                          onEditTap: @escaping () -> Void) -> some View {
+        ZStack {
+            Color.white
+                .matchedGeometryEffect(id: "\(item)_cell", in: animation)
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.black, lineWidth: 3)
+                )
+                .padding(.horizontal)
+            VStack {
+                Text("Item \(item)")
+                    .font(.title)
+                    .matchedGeometryEffect(id: "\(item)_text", in: animation)
+                    .padding(.vertical, 10)
+                
+                if isSelected {
+                    Image("1")
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(10)
+                        .matchedGeometryEffect(id: "\(item)_image", in: animation)
+                        .frame(width: UIScreen.main.bounds.width - 60,
+                               height: 300)
+                        .clipped()
+                        .padding()
+                    ZStack {
+                        Text("Edit")
+                            .font(.title)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .background(Color.purple)
+                            .cornerRadius(10)
+                    }
+                    .matchedGeometryEffect(id: "\(item)_button", in: animation)
+                    .padding(.horizontal, 40)
+                    .onTapGesture {
+                        onEditTap()
+                    }
+                }
+                Spacer()
+            }
+        }
+        .padding(.vertical, 5)
+        .offsetAppearanceEffect(showItems: showItems)
     }
 }
 
 #Preview {
-    LoadingListView()
+    @State var router = Router()
+    @State var animationCoordinator = AnimationCoordinator()
+    @Namespace var animation
+    return LoadingListView(animation: animation)
+        .environmentObject(animationCoordinator)
+        .environmentObject(router)
+        .background(Color.red)
 }

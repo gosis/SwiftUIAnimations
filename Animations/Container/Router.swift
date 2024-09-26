@@ -22,7 +22,8 @@ class Router: ObservableObject {
         HorizontalScrollNavigation.detail("").associatedValue,
         TableNavigation.animatedImageListItemView("").associatedValue,
         TableNavigation.animatedImageListDetailView2("").associatedValue,
-        TableNavigation.animatedImageListDetailView3("").associatedValue
+        TableNavigation.animatedImageListDetailView3("").associatedValue,
+        LoadingListNavigation.detail(0).associatedValue
     ]
     
     func push(_ navigable: any Navigable) {
