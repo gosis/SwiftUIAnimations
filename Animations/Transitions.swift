@@ -19,7 +19,7 @@ extension AnyTransition {
         AnyTransition.move(edge: .trailing)
             .combined(with: AnyTransition.modifier(
                 active: ScaleAndBackgroundModifier(scale: 1.2, opacity: 0.0),
-                identity: ScaleAndBackgroundModifier(scale: 1.0, opacity: 1.0)
+                identity: ScaleAndBackgroundModifier(scale: 1.0, opacity: 0.4)
             ))
     }
 }
@@ -33,10 +33,10 @@ struct ScaleAndBackgroundModifier: ViewModifier {
             Color.black
                 .opacity(opacity)
                 .ignoresSafeArea()
-            
             content
                 .scaleEffect(scale)
         }
+        .zIndex(1001)
     }
 }
 

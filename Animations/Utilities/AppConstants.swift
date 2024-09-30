@@ -15,4 +15,5 @@ enum AppConstants {
     static let animatedImageListAnimDuration = 0.2
     static let navigationAnimationDuration = 0.3
     static let loadingListAnimation = 0.2
+    static let loginAnimationDuration = 0.3
 }

@@ -113,3 +113,25 @@ enum LoadingListNavigation: Navigable {
         }
     }
 }
+
+enum LoginNavigation: Navigable {
+    case main
+    case change1
+    case finish
+    
+    var associatedValue: Int {
+        switch self {
+            case .main: return 12
+            case .change1: return 13
+            case .finish: return 13
+        }
+    }
+    
+    var id: String {
+        switch self {
+            case .main: return "main"
+            case .change1: return "change1"
+            case .finish: return "finish"
+        }
+    }
+}
