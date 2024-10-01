@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		510181062CAB071300F89D20 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510181052CAB071300F89D20 /* RouterProtocol.swift */; };
+		510181062CAB071300F89D20 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510181052CAB071300F89D20 /* Routable.swift */; };
+		510181172CAC07D800F89D20 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510181162CAC07D800F89D20 /* BaseRouter.swift */; };
 		5141DB062CA1BCAF00A22169 /* AnimatedImageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB052CA1BCAF00A22169 /* AnimatedImageListView.swift */; };
 		5141DB0A2CA1BCDD00A22169 /* AnimatedImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB092CA1BCDD00A22169 /* AnimatedImageListCell.swift */; };
 		5141DB0C2CA1C14400A22169 /* AnimatedImageListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141DB0B2CA1C14400A22169 /* AnimatedImageListItemView.swift */; };
@@ -51,7 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		510181052CAB071300F89D20 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		510181052CAB071300F89D20 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
+		510181162CAC07D800F89D20 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		5141DB052CA1BCAF00A22169 /* AnimatedImageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageListView.swift; sourceTree = "<group>"; };
 		5141DB092CA1BCDD00A22169 /* AnimatedImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageListCell.swift; sourceTree = "<group>"; };
 		5141DB0B2CA1C14400A22169 /* AnimatedImageListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageListItemView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		510181152CAC07CF00F89D20 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				510181052CAB071300F89D20 /* Routable.swift */,
+				510181162CAC07D800F89D20 /* BaseRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		5141DB082CA1BCB800A22169 /* AnimatedImageListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,7 +191,7 @@
 				5141DB352CA5D01000A22169 /* ViewModifiers.swift */,
 				5141DB4F2CAAE38E00A22169 /* CurvedInteractiveDragModifier.swift */,
 				5141DB492CAAD5AE00A22169 /* InteractiveDragModifier.swift */,
-				510181052CAB071300F89D20 /* RouterProtocol.swift */,
+				510181152CAC07CF00F89D20 /* Router */,
 				5141DB3A2CAAA35200A22169 /* Login */,
 				5141DB262CA5596200A22169 /* Container */,
 				5141DB112CA2B8A800A22169 /* Home */,
@@ -317,6 +328,7 @@
 				51451CDB2C81E53A0033DBA4 /* AppConstants.swift in Sources */,
 				5141DB302CA55DDC00A22169 /* Router.swift in Sources */,
 				5141DB172CA3149800A22169 /* AnimationCoordinator.swift in Sources */,
+				510181172CAC07D800F89D20 /* BaseRouter.swift in Sources */,
 				5141DB062CA1BCAF00A22169 /* AnimatedImageListView.swift in Sources */,
 				51451CD92C81C30B0033DBA4 /* DetailView.swift in Sources */,
 				51451CDD2C81F7D90033DBA4 /* CustomNavigationBar.swift in Sources */,
@@ -331,7 +343,7 @@
 				5141DB462CAABDD900A22169 /* NewUserView.swift in Sources */,
 				5141DB0A2CA1BCDD00A22169 /* AnimatedImageListCell.swift in Sources */,
 				5141DB502CAAE38E00A22169 /* CurvedInteractiveDragModifier.swift in Sources */,
-				510181062CAB071300F89D20 /* RouterProtocol.swift in Sources */,
+				510181062CAB071300F89D20 /* Routable.swift in Sources */,
 				5141DB192CA32F9900A22169 /* AnimatedImageListDetailView3.swift in Sources */,
 				51451CB72C80B96A0033DBA4 /* AnimationsApp.swift in Sources */,
 				51451CF62C8768BE0033DBA4 /* HorizontalScrollerView.swift in Sources */,

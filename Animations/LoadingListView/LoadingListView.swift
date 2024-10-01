@@ -42,7 +42,7 @@ struct LoadingListView: View {
                                  onEditTap: {
                             withAnimation(.easeOut(duration: AppConstants.loadingListAnimation)) {
                                 animationCoordinator.addState(item: item, sourceKey: sourceKey)
-                                router.push(LoadingListNavigation.detail(item))
+                                router.loadingListNavigation.push(.detail(item))
                             }
                         })
                         .onTapGesture {

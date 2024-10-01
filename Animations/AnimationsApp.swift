@@ -11,12 +11,13 @@ import SwiftUI
 struct AnimationsApp: App {
     var body: some Scene {
         @State var animationCoordinator = AnimationCoordinator()
+        @State var router = Router()
                 
         WindowGroup {
-            LoginContainerView()
+            TabbarContainer()
                 .preferredColorScheme(.light)
                 .environmentObject(animationCoordinator)
-                .preferredColorScheme(.light)
+                .environmentObject(router)
         }
     }
 }

@@ -22,12 +22,11 @@ struct AnimatedImageListView: View {
                         .scaleAppearanceEffect(showItems: showItems)
                         .onTapGesture {
                             withAnimation(.easeOut(duration: AppConstants.animatedImageListAnimDuration)) {
-                                let navigation = TableNavigation.animatedImageListItemView(item)
                                 let sourceKey = String(describing: AnimatedImageListView.self)
                                 
                                 animationCoordinator.addState(item: item,
                                                               sourceKey: sourceKey)
-                                router.push(navigation)
+                                router.tableNavigation.push(.animatedImageListItemView(item))
                             }
                         }
                     }

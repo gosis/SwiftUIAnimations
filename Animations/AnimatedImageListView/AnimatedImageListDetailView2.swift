@@ -21,11 +21,11 @@ struct AnimatedImageListDetailView2: View {
                     withAnimation(.linear(duration: AppConstants.animatedImageListAnimDuration)) {
                         let sourceKey = String(describing: AnimatedImageListDetailView2.self)
                         animationCoordinator.removeState(sourceKey: sourceKey)
-                        router.pop(TableNavigation.self)
+                        router.tableNavigation.pop()
                     }
                    }, onNext: {
                        withAnimation(.spring(duration: AppConstants.navigationAnimationDuration)) {
-                           router.push(TableNavigation.animatedImageListDetailView3(item))
+                           router.tableNavigation.push(.animatedImageListDetailView3(item))
                        }
                    })
                 HStack {

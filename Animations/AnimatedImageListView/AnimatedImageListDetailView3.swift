@@ -20,7 +20,7 @@ struct AnimatedImageListDetailView3: View {
             VStack {
                 CustomNavigationBar(title: "Final detail view", onDismiss: {
                     withAnimation(.spring(duration: AppConstants.navigationAnimationDuration)) {
-                        router.pop(TableNavigation.self)
+                        router.tableNavigation.pop()
                     }
                    })
                 Spacer()

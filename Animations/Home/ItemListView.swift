@@ -51,7 +51,7 @@ struct ItemListView: View {
                             .onTapGesture {
                                 withAnimation(.easeOut(duration: AppConstants.logoAnimationDuration)) {
                                     animationCoordinator.removeState(sourceKey: previousSourceKey)
-                                    router.pop(HomeNavigation.self)
+                                    router.homeNavigation.pop()
                                 }
                             }
                     }
@@ -71,7 +71,7 @@ struct ItemListView: View {
                                 .onTapGesture {
                                     withAnimation(.easeInOut(duration: AppConstants.selectionAnimationDuration)) {
                                         animationCoordinator.addState(item: item, sourceKey: nextSourceKey)
-                                        router.push(HomeNavigation.detail(item))
+                                        router.homeNavigation.push(.detail(item))
                                     }
                                 }
                                 .frame(height: 60)

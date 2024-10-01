@@ -25,13 +25,13 @@ struct AnimatedImageListItemView: View {
                     CustomNavigationBar(title: "Detail View", onDismiss: {
                         withAnimation(.linear(duration: AppConstants.animatedImageListAnimDuration)) {
                             animationCoordinator.removeState(sourceKey: sourceKey)
-                            router.pop(TableNavigation.self)
+                            router.tableNavigation.pop()
                         }
                        }, onNext: {
                            withAnimation(.linear(duration: AppConstants.animatedImageListAnimDuration)) {
                                let sourceKey = String(describing: AnimatedImageListDetailView2.self)
                                animationCoordinator.addState(item: item, sourceKey: sourceKey)
-                               router.push(TableNavigation.animatedImageListDetailView2(item))
+                               router.tableNavigation.push(.animatedImageListDetailView2(item))
                            }
                        })
                 }

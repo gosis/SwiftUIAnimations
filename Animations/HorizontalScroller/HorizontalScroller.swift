@@ -52,7 +52,7 @@ struct HorizontalScroller: View {
                         .onTapGesture {
                             withAnimation(.easeOut(duration: AppConstants.horizontalAnimation)) {
                                 animationCoordinator.addState(item: item, sourceKey: sourceKey)
-                                router.push(HorizontalScrollNavigation.detail(item))
+                                router.horizontalScrollNavigation.push(.detail(item))
                             }
                         }
                     }

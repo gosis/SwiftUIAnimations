@@ -28,7 +28,7 @@ struct HorizontalScrollerDetailView: View {
                             dismissing = true
                             withAnimation {
                                 animationCoordinator.removeState(sourceKey: sourceKey)
-                                router.pop(HorizontalScrollNavigation.self)
+                                router.horizontalScrollNavigation.pop()
                             }
                         }
                     }

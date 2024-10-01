@@ -34,7 +34,7 @@ struct DetailView: View {
                             withAnimation(.linear(duration: AppConstants.selectionAnimationDuration)) {
                                 animationCoordinator.removeState(sourceKey: sourceKey)
                                 showItems = false
-                                router.pop(HomeNavigation.self)
+                                router.homeNavigation.pop()
                             }
                         }
                     }

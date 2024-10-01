@@ -26,7 +26,7 @@ struct MainView: View {
                     .padding()
                     .onTapGesture {
                         withAnimation(.easeOut(duration: AppConstants.logoAnimationDuration)) {
-                            router.push(HomeNavigation.list)
+                            router.homeNavigation.push(.list)
                             animationCoordinator.addState(item: "logo", sourceKey: sourceKey)
                         }
                     }

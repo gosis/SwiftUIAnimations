@@ -12,27 +12,27 @@ struct TabbarContainer: View {
             ZStack {
                 ContainerView {
                     homeNavigationStack(animation: animation,
-                                        homeNavigation: router.homeNavigation)
+                                        homeRouter: router.homeNavigation)
                 }
                 .opacity(router.selectedTab == .firstTab ? 1 : 0)
                 .zIndex(router.selectedTab == .firstTab ? 1 : 0)
                 ContainerView {
                     horizontalScrollNavigationStack(animation: animation, 
-                                                    horizontalScrollNavigation: router.horizontalScrollNavigation)
+                                                    horizontalScrollRouter: router.horizontalScrollNavigation)
                 }
                 .opacity(router.selectedTab == .secondTab ? 1 : 0)
                 .zIndex(router.selectedTab == .secondTab ? 1 : 0)
 
                 ContainerView {
                     tableNavigationStack(animation: animation, 
-                                         tableNavigation: router.tableNavigation)
+                                         tableRouter: router.tableNavigation)
                 }
                 .opacity(router.selectedTab == .thirdTab ? 1 : 0)
                 .zIndex(router.selectedTab == .thirdTab ? 1 : 0)
                 
                 ContainerView {
                     loadingListNavigationStack(animation: animation,
-                                               loadingListNavigation: router.loadingListNavigation)
+                                               loadingListRouter: router.loadingListNavigation)
                 }
                 .opacity(router.selectedTab == .fourthTab ? 1 : 0)
                 .zIndex(router.selectedTab == .fourthTab ? 1 : 0)
@@ -62,9 +62,9 @@ struct TabbarContainer: View {
     }
     
     func homeNavigationStack(animation: Namespace.ID,
-                        homeNavigation: [HomeNavigation]) -> some View {
+                        homeRouter: BaseRouter<HomeNavigation>) -> some View {
         ZStack {
-            ForEach(homeNavigation, id: \.id) { navigation in
+            ForEach(homeRouter.navigationStacks, id: \.id) { navigation in
                 switch navigation {
                     case .main:
                         MainView(animation: animation)
@@ -84,9 +84,9 @@ struct TabbarContainer: View {
     }
     
     func horizontalScrollNavigationStack(animation: Namespace.ID,
-                                         horizontalScrollNavigation: [HorizontalScrollNavigation]) -> some View {
+                                         horizontalScrollRouter: BaseRouter<HorizontalScrollNavigation>) -> some View {
         ZStack {
-            ForEach(horizontalScrollNavigation, id: \.id) { navigation in
+            ForEach(horizontalScrollRouter.navigationStacks, id: \.id) { navigation in
                 switch navigation {
                     case .main:
                         HorizontalScrollerView(animation: animation)
@@ -103,9 +103,9 @@ struct TabbarContainer: View {
     }
     
     func tableNavigationStack(animation: Namespace.ID,
-                             tableNavigation: [TableNavigation]) -> some View {
+                              tableRouter: BaseRouter<TableNavigation>) -> some View {
         ZStack {
-            ForEach(tableNavigation, id: \.id) { navigation in
+            ForEach(tableRouter.navigationStacks, id: \.id) { navigation in
                 switch navigation {
                     case .animatedImageListView:
                         AnimatedImageListView(animation: animation)
@@ -130,9 +130,9 @@ struct TabbarContainer: View {
     }
     
     func loadingListNavigationStack(animation: Namespace.ID,
-                             loadingListNavigation: [LoadingListNavigation]) -> some View {
+                             loadingListRouter: BaseRouter<LoadingListNavigation>) -> some View {
         ZStack {
-            ForEach(loadingListNavigation, id: \.id) { navigation in
+            ForEach(loadingListRouter.navigationStacks, id: \.id) { navigation in
                 switch navigation {
                     case .main:
                         LoadingListView(animation: animation)

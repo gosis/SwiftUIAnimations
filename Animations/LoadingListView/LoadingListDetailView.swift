@@ -73,7 +73,7 @@ struct LoadingListDetailView: View {
         withAnimation(.easeOut(duration: AppConstants.loadingListAnimation)) {
             showItems = false
             animationCoordinator.removeState(sourceKey: previousSourceKey)
-            router.pop(LoadingListNavigation.self)
+            router.loadingListNavigation.pop()
         }
     }
 }
