@@ -1,7 +1,5 @@
 import SwiftUI
 
-import SwiftUI
-
 struct CurvedInteractiveDragModifier: ViewModifier {
     var animationCoordinator: AnimationCoordinator
     var loginRouter: LoginRouter

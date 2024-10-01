@@ -49,6 +49,10 @@
 		51451CFA2C876C310033DBA4 /* HorizontalScrollerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CF92C876C310033DBA4 /* HorizontalScrollerDetailView.swift */; };
 		51451CFC2C877FFE0033DBA4 /* TabbarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CFB2C877FFE0033DBA4 /* TabbarContainer.swift */; };
 		51451CFE2C8788EB0033DBA4 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51451CFD2C8788EB0033DBA4 /* Transitions.swift */; };
+		519DEB0F2CAC2EFA001EC246 /* NavigationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519DEB0E2CAC2EFA001EC246 /* NavigationContainerView.swift */; };
+		519DEB122CAC2FE3001EC246 /* NavigationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519DEB112CAC2FE3001EC246 /* NavigationListView.swift */; };
+		519DEB142CAC2FF9001EC246 /* NavigationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519DEB132CAC2FF9001EC246 /* NavigationDetailView.swift */; };
+		51D6B2232CAC683200891B15 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D6B2222CAC683200891B15 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +100,10 @@
 		51451CF92C876C310033DBA4 /* HorizontalScrollerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollerDetailView.swift; sourceTree = "<group>"; };
 		51451CFB2C877FFE0033DBA4 /* TabbarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarContainer.swift; sourceTree = "<group>"; };
 		51451CFD2C8788EB0033DBA4 /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
+		519DEB0E2CAC2EFA001EC246 /* NavigationContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationContainerView.swift; sourceTree = "<group>"; };
+		519DEB112CAC2FE3001EC246 /* NavigationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationListView.swift; sourceTree = "<group>"; };
+		519DEB132CAC2FF9001EC246 /* NavigationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDetailView.swift; sourceTree = "<group>"; };
+		51D6B2222CAC683200891B15 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +199,8 @@
 				5141DB352CA5D01000A22169 /* ViewModifiers.swift */,
 				5141DB4F2CAAE38E00A22169 /* CurvedInteractiveDragModifier.swift */,
 				5141DB492CAAD5AE00A22169 /* InteractiveDragModifier.swift */,
+				51D6B2222CAC683200891B15 /* ContentView.swift */,
+				519DEB102CAC2EFF001EC246 /* Native Navigation */,
 				510181152CAC07CF00F89D20 /* Router */,
 				5141DB3A2CAAA35200A22169 /* Login */,
 				5141DB262CA5596200A22169 /* Container */,
@@ -245,6 +255,16 @@
 				51451CF72C876A900033DBA4 /* HorizontalScrollerCell.swift */,
 			);
 			path = HorizontalScroller;
+			sourceTree = "<group>";
+		};
+		519DEB102CAC2EFF001EC246 /* Native Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				519DEB0E2CAC2EFA001EC246 /* NavigationContainerView.swift */,
+				519DEB112CAC2FE3001EC246 /* NavigationListView.swift */,
+				519DEB132CAC2FF9001EC246 /* NavigationDetailView.swift */,
+			);
+			path = "Native Navigation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +350,8 @@
 				5141DB172CA3149800A22169 /* AnimationCoordinator.swift in Sources */,
 				510181172CAC07D800F89D20 /* BaseRouter.swift in Sources */,
 				5141DB062CA1BCAF00A22169 /* AnimatedImageListView.swift in Sources */,
+				519DEB0F2CAC2EFA001EC246 /* NavigationContainerView.swift in Sources */,
+				519DEB122CAC2FE3001EC246 /* NavigationListView.swift in Sources */,
 				51451CD92C81C30B0033DBA4 /* DetailView.swift in Sources */,
 				51451CDD2C81F7D90033DBA4 /* CustomNavigationBar.swift in Sources */,
 				51451CF82C876A900033DBA4 /* HorizontalScrollerCell.swift in Sources */,
@@ -337,6 +359,7 @@
 				5141DB342CA5B2EB00A22169 /* LoadingListDetailView.swift in Sources */,
 				51451CD02C81BF1E0033DBA4 /* MainView.swift in Sources */,
 				51451CE12C81FE7D0033DBA4 /* DetailViewScroller.swift in Sources */,
+				519DEB142CAC2FF9001EC246 /* NavigationDetailView.swift in Sources */,
 				5141DB2A2CA55A9600A22169 /* Navigable.swift in Sources */,
 				51451CE32C8330850033DBA4 /* LoadingListView.swift in Sources */,
 				5141DB362CA5D01000A22169 /* ViewModifiers.swift in Sources */,
@@ -352,6 +375,7 @@
 				5141DB132CA2F53100A22169 /* AnimatedImageListDetailView2.swift in Sources */,
 				51451CFC2C877FFE0033DBA4 /* TabbarContainer.swift in Sources */,
 				5141DB3C2CAAA35C00A22169 /* LoginContainerView.swift in Sources */,
+				51D6B2232CAC683200891B15 /* ContentView.swift in Sources */,
 				5141DB1B2CA45AD000A22169 /* HorizontalScroller.swift in Sources */,
 				5141DB322CA564B000A22169 /* Extensions.swift in Sources */,
 				51451CD72C81C1C00033DBA4 /* ItemListCell.swift in Sources */,

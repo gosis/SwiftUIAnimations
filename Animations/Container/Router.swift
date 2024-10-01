@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 class Router: ObservableObject {
@@ -25,7 +26,9 @@ class Router: ObservableObject {
     
     @Published var loadingListNavigation = BaseRouter<LoadingListNavigation>(tabbarHiddenRoutes: [LoadingListNavigation.detail(0).associatedValue],
                                                                 navigationStacks: [.main])
-    
+        
+    @Published var navigationTabPath = NavigationPath()
+        
     
     func needsToHideTabbar() -> Bool {
         switch selectedTab {
@@ -37,6 +40,8 @@ class Router: ObservableObject {
             return tableNavigation.needsToHideTabbar()
         case .fourthTab:
             return loadingListNavigation.needsToHideTabbar()
+        case .fifthTab:
+            return false
         }
     }
 }

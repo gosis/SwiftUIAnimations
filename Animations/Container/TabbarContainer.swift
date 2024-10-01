@@ -36,6 +36,12 @@ struct TabbarContainer: View {
                 }
                 .opacity(router.selectedTab == .fourthTab ? 1 : 0)
                 .zIndex(router.selectedTab == .fourthTab ? 1 : 0)
+                
+                ContainerView {
+                    NavigationContainerView()
+                }
+                    .opacity(router.selectedTab == .fifthTab ? 1 : 0)
+                    .zIndex(router.selectedTab == .fifthTab ? 1 : 0)
             }
             .background(.black)
             .padding(.bottom, needstohideTabBar ? -100 : 0)
@@ -52,6 +58,9 @@ struct TabbarContainer: View {
                 Spacer()
                 TabBarButton(tab: .fourthTab, selectedTab: $router.selectedTab,
                              icon: "person.fill")
+                Spacer()
+                TabBarButton(tab: .fifthTab, selectedTab: $router.selectedTab,
+                             icon: "house")
             }
             .padding()
             .padding(.bottom, UIApplication.shared.safeAreaInsets.bottom > 0 ? 0 : 30)
@@ -154,6 +163,7 @@ enum Tab {
     case secondTab
     case thirdTab
     case fourthTab
+    case fifthTab
 }
 
 struct TabBarButton: View {

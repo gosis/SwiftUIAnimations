@@ -135,3 +135,19 @@ enum LoginNavigation: Navigable {
         }
     }
 }
+
+enum NativeNavigationTab: Navigable {
+    case main
+    
+    var associatedValue: Int {
+        switch self {
+            case .main: return 14
+        }
+    }
+    
+    var id: String {
+        switch self {
+            case .main: return "main"
+        }
+    }
+}
