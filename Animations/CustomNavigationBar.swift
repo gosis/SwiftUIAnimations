@@ -26,7 +26,7 @@ struct CustomNavigationBar: View {
                     Spacer()
                     if let onNext = onNext {
                         Button(action: {
-                            withAnimation(.easeInOut(duration: AppConstants.selectionAnimationDuration)) {
+                            withAnimation(.easeInOut(duration: AppConstants.homeViewAnimDuration)) {
                                 onNext()
                             }
                         }) {

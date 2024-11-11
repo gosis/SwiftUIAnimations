@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AnimatedImageListDetailView3: View {
+struct NotificationsDetailView3: View {
     var animation: Namespace.ID
     @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
@@ -19,8 +19,8 @@ struct AnimatedImageListDetailView3: View {
                 .edgesIgnoringSafeArea(.bottom)
             VStack {
                 CustomNavigationBar(title: "Final detail view", onDismiss: {
-                    withAnimation(.spring(duration: AppConstants.navigationAnimationDuration)) {
-                        router.tableNavigation.pop()
+                    withAnimation(.spring(duration: AppConstants.notificationsNavigationAnimDuration)) {
+                        router.notificationsNavigation.pop()
                     }
                    })
                 Spacer()
@@ -32,5 +32,5 @@ struct AnimatedImageListDetailView3: View {
 
 #Preview {
     @Namespace var animation
-    return AnimatedImageListDetailView3(animation: animation, item: "test")
+    return NotificationsDetailView3(animation: animation, item: "test")
 }

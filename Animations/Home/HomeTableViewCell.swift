@@ -1,5 +1,5 @@
 //
-//  ItemListCell.swift
+//  HomeTableViewCell.swift
 //  Animations
 //
 //  Created by Gints Osis on 30/08/2024.
@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct ItemListCell: View {
+/// Cell in HomeTableView
+/// with animateable title and background
+struct HomeTableViewCell: View {
     let item: String
     let selected: Bool
     var animation: Namespace.ID

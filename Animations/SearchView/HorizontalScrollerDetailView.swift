@@ -17,7 +17,7 @@ struct HorizontalScrollerDetailView: View {
     @State private var showItems = false
     @State private var dismissing = false
     
-    let sourceKey = String(describing: HorizontalScrollerView.self)
+    let sourceKey = String(describing: SearchView.self)
 
     var body: some View {
         ZStack {
@@ -28,7 +28,7 @@ struct HorizontalScrollerDetailView: View {
                             dismissing = true
                             withAnimation {
                                 animationCoordinator.removeState(sourceKey: sourceKey)
-                                router.horizontalScrollNavigation.pop()
+                                router.searchNavigation.pop()
                             }
                         }
                     }
@@ -49,7 +49,7 @@ struct HorizontalScrollerDetailView: View {
         .onAppear {
             dismissing = false
             DispatchQueue.main.asyncAfter(deadline: .now() + AppConstants.horizontalAnimation) {
-                withAnimation(.easeOut(duration: AppConstants.horizontalFullscreenAnimation)) {
+                withAnimation(.easeOut(duration: AppConstants.horizontalScrollerAnimDuration)) {
                     showItems = true
                 }
             }

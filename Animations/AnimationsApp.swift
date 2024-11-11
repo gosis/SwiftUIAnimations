@@ -14,7 +14,7 @@ struct AnimationsApp: App {
         @State var router = Router()
                 
         WindowGroup {
-            ContentView()
+            TabbarContainer()
                 .preferredColorScheme(.light)
                 .environmentObject(animationCoordinator)
                 .environmentObject(router)

@@ -19,7 +19,6 @@ protocol Routable {
     func needsToHideTabbar() -> Bool
 }
 
-// Default implementations for Routable
 extension Routable {
     
     mutating func push(_ navigable: NavigationType) {

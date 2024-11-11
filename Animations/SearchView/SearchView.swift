@@ -1,5 +1,5 @@
 //
-//  ItemListView.swift
+//  SearchView.swift
 //  Animations
 //
 //  Created by Gints Osis on 30/08/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HorizontalScrollerView: View {
+struct SearchView: View {
     @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
@@ -15,7 +15,7 @@ struct HorizontalScrollerView: View {
     
     @State private var showItems = false
             
-    let sourceKey = String(describing: HorizontalScrollerView.self)
+    let sourceKey = String(describing: SearchView.self)
     
     var body: some View {
         ZStack {
@@ -24,11 +24,11 @@ struct HorizontalScrollerView: View {
                 HorizontalScroller(animation: animation, items: Array(1...10).map { "Item \($0)" }, showItems: showItems)
                 Spacer()
                     .frame(height: 20)
-                scrollerTitle("First scroller title")
+                scrollerTitle("Second scroller title")
                 HorizontalScroller(animation: animation, items: Array(11...20).map { "Item \($0)" }, showItems: showItems)
                 Spacer()
                     .frame(height: 20)
-                scrollerTitle("First scroller title")
+                scrollerTitle("Third scroller title")
                 HorizontalScroller(animation: animation, items: Array(21...30).map { "Item \($0)" }, showItems: showItems)
                 Spacer()
             }
@@ -53,7 +53,7 @@ struct HorizontalScrollerView: View {
     @State var router = Router()
     @State var animationCoordinator = AnimationCoordinator()
     
-    return HorizontalScrollerView(animation: animation)
+    return SearchView(animation: animation)
         .environmentObject(router)
         .environmentObject(animationCoordinator)
 }

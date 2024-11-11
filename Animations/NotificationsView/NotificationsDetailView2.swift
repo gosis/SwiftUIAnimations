@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AnimatedImageListDetailView2: View {
+struct NotificationsDetailView2: View {
     var animation: Namespace.ID
     @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
@@ -18,14 +18,14 @@ struct AnimatedImageListDetailView2: View {
             Color.gray
             VStack {
                 CustomNavigationBar(title: "Next detail view", onDismiss: {
-                    withAnimation(.linear(duration: AppConstants.animatedImageListAnimDuration)) {
-                        let sourceKey = String(describing: AnimatedImageListDetailView2.self)
+                    withAnimation(.linear(duration: AppConstants.notificationsAnimDuration)) {
+                        let sourceKey = String(describing: NotificationsDetailView2.self)
                         animationCoordinator.removeState(sourceKey: sourceKey)
-                        router.tableNavigation.pop()
+                        router.notificationsNavigation.pop()
                     }
                    }, onNext: {
-                       withAnimation(.spring(duration: AppConstants.navigationAnimationDuration)) {
-                           router.tableNavigation.push(.animatedImageListDetailView3(item))
+                       withAnimation(.spring(duration: AppConstants.notificationsNavigationAnimDuration)) {
+                           router.notificationsNavigation.push(.notificationsDetailView3(item))
                        }
                    })
                 HStack {
@@ -52,5 +52,5 @@ struct AnimatedImageListDetailView2: View {
 
 #Preview {
     @Namespace var animation
-    return AnimatedImageListDetailView2(animation: animation, item: "test")
+    return NotificationsDetailView2(animation: animation, item: "test")
 }

@@ -27,6 +27,14 @@ class AnimationState: Hashable {
     }
 }
 
+
+/// Simple animation coordinator for transition with matchedGeometryEffect
+/// Before a view transitions an id of the animation is stored with the corresponding sourceKey
+/// In sourceKey  the name of the destination component is stored
+/// During and after the transition completes the destination view checks if the animation is active using isActive
+/// if animation is active it means that the animated component doesn't need to be rendered in the source component or vice versa
+///
+/// Helps to separate source and destination views for matchedGeometryEffect transitions
 class AnimationCoordinator: ObservableObject {
     
     // Dictionary to store active states with item as key

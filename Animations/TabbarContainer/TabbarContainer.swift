@@ -17,31 +17,25 @@ struct TabbarContainer: View {
                 .opacity(router.selectedTab == .firstTab ? 1 : 0)
                 .zIndex(router.selectedTab == .firstTab ? 1 : 0)
                 ContainerView {
-                    horizontalScrollNavigationStack(animation: animation, 
-                                                    horizontalScrollRouter: router.horizontalScrollNavigation)
+                    searchNavigationStack(animation: animation,
+                                          searchRouter: router.searchNavigation)
                 }
                 .opacity(router.selectedTab == .secondTab ? 1 : 0)
                 .zIndex(router.selectedTab == .secondTab ? 1 : 0)
 
                 ContainerView {
-                    tableNavigationStack(animation: animation, 
-                                         tableRouter: router.tableNavigation)
+                    notificationsNavigationStack(animation: animation,
+                                                 notificationsRouter: router.notificationsNavigation)
                 }
                 .opacity(router.selectedTab == .thirdTab ? 1 : 0)
                 .zIndex(router.selectedTab == .thirdTab ? 1 : 0)
                 
                 ContainerView {
-                    loadingListNavigationStack(animation: animation,
-                                               loadingListRouter: router.loadingListNavigation)
+                    settingsNavigationStack(animation: animation,
+                                            settingsRouter: router.settingsNavigation)
                 }
                 .opacity(router.selectedTab == .fourthTab ? 1 : 0)
                 .zIndex(router.selectedTab == .fourthTab ? 1 : 0)
-                
-                ContainerView {
-                    NavigationContainerView()
-                }
-                    .opacity(router.selectedTab == .fifthTab ? 1 : 0)
-                    .zIndex(router.selectedTab == .fifthTab ? 1 : 0)
             }
             .background(.black)
             .padding(.bottom, needstohideTabBar ? -100 : 0)
@@ -54,13 +48,10 @@ struct TabbarContainer: View {
                              icon: "magnifyingglass")
                 Spacer()
                 TabBarButton(tab: .thirdTab, selectedTab: $router.selectedTab,
-                             icon: "person.fill")
+                             icon: "bell.fill")
                 Spacer()
                 TabBarButton(tab: .fourthTab, selectedTab: $router.selectedTab,
-                             icon: "person.fill")
-                Spacer()
-                TabBarButton(tab: .fifthTab, selectedTab: $router.selectedTab,
-                             icon: "house")
+                             icon: "gearshape.fill")
             }
             .padding()
             .padding(.bottom, UIApplication.shared.safeAreaInsets.bottom > 0 ? 0 : 30)
@@ -76,15 +67,15 @@ struct TabbarContainer: View {
             ForEach(homeRouter.navigationStacks, id: \.id) { navigation in
                 switch navigation {
                     case .main:
-                        MainView(animation: animation)
+                    HomeView(animation: animation)
                         .zIndex(1)
                         .transition(.noTransition)
                     case .list:
-                        ItemListView(animation: animation)
+                    HomeTableView(animation: animation)
                         .zIndex(2)
                         .transition(.noTransition)
                     case .detail(let item):
-                        DetailView(animation: animation, item: item)
+                    HomeDetailView(animation: animation, item: item)
                         .zIndex(3)
                         .transition(.noTransition)
                 }
@@ -92,13 +83,13 @@ struct TabbarContainer: View {
         }
     }
     
-    func horizontalScrollNavigationStack(animation: Namespace.ID,
-                                         horizontalScrollRouter: BaseRouter<HorizontalScrollNavigation>) -> some View {
+    func searchNavigationStack(animation: Namespace.ID,
+                                         searchRouter: BaseRouter<SearchNavigation>) -> some View {
         ZStack {
-            ForEach(horizontalScrollRouter.navigationStacks, id: \.id) { navigation in
+            ForEach(searchRouter.navigationStacks, id: \.id) { navigation in
                 switch navigation {
                     case .main:
-                        HorizontalScrollerView(animation: animation)
+                    SearchView(animation: animation)
                             .transition(.noTransition)
                             .zIndex(1)
                 case .detail(let item):
@@ -111,25 +102,25 @@ struct TabbarContainer: View {
         }
     }
     
-    func tableNavigationStack(animation: Namespace.ID,
-                              tableRouter: BaseRouter<TableNavigation>) -> some View {
+    func notificationsNavigationStack(animation: Namespace.ID,
+                              notificationsRouter: BaseRouter<NotificationsNavigation>) -> some View {
         ZStack {
-            ForEach(tableRouter.navigationStacks, id: \.id) { navigation in
+            ForEach(notificationsRouter.navigationStacks, id: \.id) { navigation in
                 switch navigation {
-                    case .animatedImageListView:
-                        AnimatedImageListView(animation: animation)
-                    case .animatedImageListItemView(let item):
-                        AnimatedImageListItemView(animation: animation,
+                case .notificationsView:
+                        NotificationsView(animation: animation)
+                case .notificationsDetailView(let item):
+                    NotificationsDetailView(animation: animation,
                                                   item: item)
                             .transition(.noTransition)
                             .zIndex(1)
-                    case .animatedImageListDetailView2(let item):
-                        AnimatedImageListDetailView2(animation: animation,
+                case .notificationsDetailView2(let item):
+                    NotificationsDetailView2(animation: animation,
                                                      item: item)
                             .transition(.noTransition)
                             .zIndex(2)
-                case .animatedImageListDetailView3(let item):
-                    AnimatedImageListDetailView3(animation: animation,
+                case .notificationsDetailView3(let item):
+                    NotificationsDetailView3(animation: animation,
                                                  item: item)
                         .transition(.navigationTransition)
                         .zIndex(3)
@@ -138,17 +129,17 @@ struct TabbarContainer: View {
         }
     }
     
-    func loadingListNavigationStack(animation: Namespace.ID,
-                             loadingListRouter: BaseRouter<LoadingListNavigation>) -> some View {
+    func settingsNavigationStack(animation: Namespace.ID,
+                             settingsRouter: BaseRouter<SettingsNavigation>) -> some View {
         ZStack {
-            ForEach(loadingListRouter.navigationStacks, id: \.id) { navigation in
+            ForEach(settingsRouter.navigationStacks, id: \.id) { navigation in
                 switch navigation {
                     case .main:
-                        LoadingListView(animation: animation)
+                    SettingsView(animation: animation)
                             .transition(.noTransition)
                             .zIndex(1)
                     case .detail(let item):
-                        LoadingListDetailView(animation: animation, 
+                    SettingsDetailView(animation: animation, 
                                               item: item)
                             .transition(.noTransition)
                             .zIndex(2)
@@ -163,7 +154,6 @@ enum Tab {
     case secondTab
     case thirdTab
     case fourthTab
-    case fifthTab
 }
 
 struct TabBarButton: View {

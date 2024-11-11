@@ -8,12 +8,10 @@
 import SwiftUI
 
 enum AppConstants {
-    static let logoAnimationDuration = 0.2
-    static let selectionAnimationDuration = 0.2
+    static let homeViewAnimDuration = 0.2
     static let horizontalAnimation = 0.2
-    static let horizontalFullscreenAnimation = 0.1
-    static let animatedImageListAnimDuration = 0.2
-    static let navigationAnimationDuration = 0.3
-    static let loadingListAnimation = 0.2
-    static let loginAnimationDuration = 0.3
+    static let horizontalScrollerAnimDuration = 0.1
+    static let notificationsAnimDuration = 0.2
+    static let notificationsNavigationAnimDuration = 0.3
+    static let settingsTransitionAnimDuration = 0.2
 }

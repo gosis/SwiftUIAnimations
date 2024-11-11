@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AnimatedImageListView: View {
+struct NotificationsView: View {
     var animation: Namespace.ID
     @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
@@ -9,8 +9,6 @@ struct AnimatedImageListView: View {
     @State private var selectedItem: String?
     @State private var showItems = false
     
-    let string = String(describing: AnimatedImageListView.self)
-
     var body: some View {
         ZStack {
             ScrollView(.vertical, showsIndicators: false) {
@@ -21,12 +19,12 @@ struct AnimatedImageListView: View {
                         .transition(.noTransition)
                         .scaleAppearanceEffect(showItems: showItems)
                         .onTapGesture {
-                            withAnimation(.easeOut(duration: AppConstants.animatedImageListAnimDuration)) {
-                                let sourceKey = String(describing: AnimatedImageListView.self)
+                            withAnimation(.easeOut(duration: AppConstants.notificationsAnimDuration)) {
+                                let sourceKey = String(describing: NotificationsView.self)
                                 
                                 animationCoordinator.addState(item: item,
                                                               sourceKey: sourceKey)
-                                router.tableNavigation.push(.animatedImageListItemView(item))
+                                router.notificationsNavigation.push(.notificationsDetailView(item))
                             }
                         }
                     }
@@ -42,6 +40,6 @@ struct AnimatedImageListView: View {
 
 #Preview {
     @Namespace var animation
-    return AnimatedImageListView(animation: animation)
+    return NotificationsView(animation: animation)
 }
 

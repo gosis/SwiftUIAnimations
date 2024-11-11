@@ -1,7 +1,7 @@
 import SwiftUI
 import Combine
 
-class LoadingListViewModel: ObservableObject {
+class SettingsViewModel: ObservableObject {
     @Published var items: [Int] = []
     @Published var isLoading: Bool = false
     
@@ -10,7 +10,7 @@ class LoadingListViewModel: ObservableObject {
     private let totalItems = 300
     
     init() {
-        loadNextItems() // Load the first set of items
+        loadNextItems()
     }
 
     func loadNextItems() {
@@ -20,7 +20,6 @@ class LoadingListViewModel: ObservableObject {
         let startIndex = currentPage * itemsPerPage
         let endIndex = min(startIndex + itemsPerPage, totalItems)
         
-        // Simulate a network or data fetch delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             let newItems = Array(startIndex..<endIndex)
             self.items.append(contentsOf: newItems)

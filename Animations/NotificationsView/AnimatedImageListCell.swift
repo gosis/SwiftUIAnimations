@@ -15,7 +15,7 @@ struct AnimatedImageListCell: View {
 
     var body: some View {
         ZStack {
-            let sourceKey = String(describing: AnimatedImageListView.self)
+            let sourceKey = String(describing: NotificationsView.self)
             if let stateHashable = animationCoordinator.getState(sourceKey: sourceKey),
                 let selectedItem = stateHashable as? String,
                 selectedItem == item {

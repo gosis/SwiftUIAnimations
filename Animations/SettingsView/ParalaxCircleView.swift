@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Table header paralax effect with four overlapping stretching circles
 struct ParallaxCirclesView: View {
     var body: some View {
         GeometryReader { geometry in

@@ -8,6 +8,10 @@
 import SwiftUI
 
 extension AnyTransition {
+    
+    /// Custom transition used to remove default opacity transitions added by Apple
+    /// Some animation has to happen otherwise a default transition is applied
+    /// so as a workaround we use a 0.01 scale change
     static var noTransition: AnyTransition { get {
         AnyTransition.modifier(
             active: NoTransitionModifier(scale: 0.99),

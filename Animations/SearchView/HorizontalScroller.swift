@@ -16,7 +16,7 @@ struct HorizontalScroller: View {
     
     let items:[String]
     let showItems: Bool
-    let sourceKey = String(describing: HorizontalScrollerView.self)
+    let sourceKey = String(describing: SearchView.self)
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -52,7 +52,7 @@ struct HorizontalScroller: View {
                         .onTapGesture {
                             withAnimation(.easeOut(duration: AppConstants.horizontalAnimation)) {
                                 animationCoordinator.addState(item: item, sourceKey: sourceKey)
-                                router.horizontalScrollNavigation.push(.detail(item))
+                                router.searchNavigation.push(.detail(item))
                             }
                         }
                     }

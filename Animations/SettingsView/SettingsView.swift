@@ -1,15 +1,15 @@
 import SwiftUI
 
-struct LoadingListView: View {
+struct SettingsView: View {
     var animation: Namespace.ID
     @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
-    @StateObject private var viewModel = LoadingListViewModel()
+    @StateObject private var viewModel = SettingsViewModel()
     @State private var selectedItem: Int?
     @State private var showItems = false
     
-    let sourceKey = String(describing: LoadingListView.self)
+    let sourceKey = String(describing: SettingsView.self)
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -40,13 +40,13 @@ struct LoadingListView: View {
                                  isSelected: isSelected,
                                  showItems: showItems,
                                  onEditTap: {
-                            withAnimation(.easeOut(duration: AppConstants.loadingListAnimation)) {
+                            withAnimation(.easeOut(duration: AppConstants.settingsTransitionAnimDuration)) {
                                 animationCoordinator.addState(item: item, sourceKey: sourceKey)
-                                router.loadingListNavigation.push(.detail(item))
+                                router.settingsNavigation.push(.detail(item))
                             }
                         })
                         .onTapGesture {
-                            withAnimation(.easeOut(duration: AppConstants.loadingListAnimation)) {
+                            withAnimation(.easeOut(duration: AppConstants.settingsTransitionAnimDuration)) {
                                 if isSelected {
                                     selectedItem = nil
                                 } else {
@@ -131,7 +131,7 @@ struct LoadingListView: View {
     @State var router = Router()
     @State var animationCoordinator = AnimationCoordinator()
     @Namespace var animation
-    return LoadingListView(animation: animation)
+    return SettingsView(animation: animation)
         .environmentObject(animationCoordinator)
         .environmentObject(router)
         .background(Color.red)

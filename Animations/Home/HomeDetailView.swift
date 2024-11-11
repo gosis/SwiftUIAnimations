@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  HomeDetailView.swift
 //  Animations
 //
 //  Created by Gints Osis on 30/08/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailView: View {
+struct HomeDetailView: View {
     @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
@@ -16,7 +16,7 @@ struct DetailView: View {
     
     @State private var showItems = false
     
-    let sourceKey = String(describing: DetailView.self)
+    let sourceKey = String(describing: HomeDetailView.self)
 
     var body: some View {
         ZStack {
@@ -31,7 +31,7 @@ struct DetailView: View {
                 VStack {
                     if showItems {
                         CustomNavigationBar(title: "Detail View") {
-                            withAnimation(.linear(duration: AppConstants.selectionAnimationDuration)) {
+                            withAnimation(.linear(duration: AppConstants.homeViewAnimDuration)) {
                                 animationCoordinator.removeState(sourceKey: sourceKey)
                                 showItems = false
                                 router.homeNavigation.pop()
@@ -44,23 +44,17 @@ struct DetailView: View {
                         .matchedGeometryEffect(id: "\(item)-text", in: animation)
                     Spacer()
                     if (showItems && animationCoordinator.isActive(sourceKey: sourceKey)) {
-                        DetailViewScroller()
+                        HomeDetailViewScroller()
                     }
                 }
         }
         .background(.clear)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + AppConstants.selectionAnimationDuration) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + AppConstants.homeViewAnimDuration) {
                 withAnimation(.easeIn) {
                     showItems = true
                 }
             }
         }
     }
-}
-
-#Preview {
-    @Namespace var animation
-    return DetailView(animation: animation, 
-                      item: "test")
 }

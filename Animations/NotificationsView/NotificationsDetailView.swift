@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AnimatedImageListItemView: View {
+struct NotificationsDetailView: View {
     var animation: Namespace.ID
     @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
@@ -19,19 +19,18 @@ struct AnimatedImageListItemView: View {
                 .matchedGeometryEffect(id: "\(item)_cell", in: animation)
                 .edgesIgnoringSafeArea(.bottom)
             VStack {
-                let sourceKey = String(describing: AnimatedImageListView.self)
-                let nextSourceKey = String(describing: AnimatedImageListDetailView2.self)
+                let sourceKey = String(describing: NotificationsView.self)
+                let nextSourceKey = String(describing: NotificationsDetailView2.self)
                 if animationCoordinator.isActive(sourceKey: sourceKey) {
                     CustomNavigationBar(title: "Detail View", onDismiss: {
-                        withAnimation(.linear(duration: AppConstants.animatedImageListAnimDuration)) {
+                        withAnimation(.linear(duration: AppConstants.notificationsAnimDuration)) {
                             animationCoordinator.removeState(sourceKey: sourceKey)
-                            router.tableNavigation.pop()
+                            router.notificationsNavigation.pop()
                         }
                        }, onNext: {
-                           withAnimation(.linear(duration: AppConstants.animatedImageListAnimDuration)) {
-                               let sourceKey = String(describing: AnimatedImageListDetailView2.self)
+                           withAnimation(.linear(duration: AppConstants.notificationsAnimDuration)) {
                                animationCoordinator.addState(item: item, sourceKey: sourceKey)
-                               router.tableNavigation.push(.animatedImageListDetailView2(item))
+                               router.notificationsNavigation.push(.notificationsDetailView2(item))
                            }
                        })
                 }
@@ -57,7 +56,7 @@ struct AnimatedImageListItemView: View {
     @State var router = Router()
     @State var animationCoordinator = AnimationCoordinator()
     @Namespace var animation
-    return AnimatedImageListItemView(animation: animation,
+    return NotificationsDetailView(animation: animation,
                                        item: "test")
         .environmentObject(router)
         .environmentObject(animationCoordinator)

@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  SettingsDetailView.swift
 //  Animations
 //
 //  Created by Gints Osis on 30/08/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoadingListDetailView: View {
+struct SettingsDetailView: View {
     var animation: Namespace.ID
     @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
@@ -16,7 +16,7 @@ struct LoadingListDetailView: View {
     
     var item: Int
     
-    let previousSourceKey = String(describing: LoadingListView.self)
+    let previousSourceKey = String(describing: SettingsView.self)
     
     var body: some View {
         ZStack {
@@ -69,16 +69,16 @@ struct LoadingListDetailView: View {
     }
     
     func dismiss() {
-        let previousSourceKey = String(describing: LoadingListView.self)
-        withAnimation(.easeOut(duration: AppConstants.loadingListAnimation)) {
+        let previousSourceKey = String(describing: SettingsView.self)
+        withAnimation(.easeOut(duration: AppConstants.settingsTransitionAnimDuration)) {
             showItems = false
             animationCoordinator.removeState(sourceKey: previousSourceKey)
-            router.loadingListNavigation.pop()
+            router.settingsNavigation.pop()
         }
     }
 }
 
 #Preview {
     @Namespace var animation
-    return LoadingListDetailView(animation: animation, item: 3)
+    return SettingsDetailView(animation: animation, item: 3)
 }

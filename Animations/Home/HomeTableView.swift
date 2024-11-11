@@ -1,5 +1,5 @@
 //
-//  ItemListView.swift
+//  HomeTableView.swift
 //  Animations
 //
 //  Created by Gints Osis on 30/08/2024.
@@ -7,16 +7,18 @@
 
 import SwiftUI
 
-struct ItemListView: View {
+/// TableView with header opening each item with transition
+/// of cell title and moving lower cells out of the screen to the bottom
+struct HomeTableView: View {
     @EnvironmentObject var router: Router
     @EnvironmentObject var animationCoordinator: AnimationCoordinator
     
     var animation: Namespace.ID
     @State private var showList = false
         
-    let previousSourceKey = String(describing: MainView.self)
-    let sourceKey = String(describing: ItemListView.self)
-    let nextSourceKey = String(describing: DetailView.self)
+    let previousSourceKey = String(describing: HomeView.self)
+    let sourceKey = String(describing: HomeTableView.self)
+    let nextSourceKey = String(describing: HomeDetailView.self)
     
     @State var items = [
         "Test15",
@@ -49,7 +51,7 @@ struct ItemListView: View {
                             .offset(y: 20)
                             .padding()
                             .onTapGesture {
-                                withAnimation(.easeOut(duration: AppConstants.logoAnimationDuration)) {
+                                withAnimation(.easeOut(duration: AppConstants.homeViewAnimDuration)) {
                                     animationCoordinator.removeState(sourceKey: previousSourceKey)
                                     router.homeNavigation.pop()
                                 }
@@ -65,11 +67,11 @@ struct ItemListView: View {
                             let item = items[index]
                             
                             if selectedItem != item {
-                                ItemListCell(item: item,
+                                HomeTableViewCell(item: item,
                                              selected: true,
                                              animation: animation)
                                 .onTapGesture {
-                                    withAnimation(.easeInOut(duration: AppConstants.selectionAnimationDuration)) {
+                                    withAnimation(.easeInOut(duration: AppConstants.homeViewAnimDuration)) {
                                         animationCoordinator.addState(item: item, sourceKey: nextSourceKey)
                                         router.homeNavigation.push(.detail(item))
                                     }
@@ -93,10 +95,4 @@ struct ItemListView: View {
             }
         }
     }
-}
-
-#Preview {
-    @Namespace var animation
-    
-    return ItemListView(animation: animation)
 }
